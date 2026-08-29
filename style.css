@@ -1,0 +1,126 @@
+/* Base and Typography handled by Tailwind */
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background-color: #0f172a; /* Dark track */
+}
+.light ::-webkit-scrollbar-track {
+    background-color: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 10px;
+}
+.light ::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #0055ff;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+    background-color: #00e5ff;
+}
+
+/* Animations */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Floating Chips Background Animation */
+.floating-chip {
+    position: absolute;
+    animation: float 15s infinite ease-in-out;
+    opacity: 0.15;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+/* Circuit trace animation */
+.circuit-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.5), transparent);
+    height: 1px;
+    width: 100px;
+    animation: trace 4s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes trace {
+    0% { transform: translateX(-100px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100vw); opacity: 0; }
+}
+
+/* PCB grid background overlay */
+.bg-pcb {
+    background-image: radial-gradient(circle, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+.light .bg-pcb {
+    background-image: radial-gradient(circle, rgba(0, 85, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Gradient text */
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glowing border effect */
+.glow-border {
+    position: relative;
+}
+.glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, #0055ff, #00e5ff, #0055ff);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.glow-border:hover::before {
+    opacity: 1;
+}
+
+/* Timeline specific styles */
+.timeline-dot {
+    @apply w-4 h-4 rounded-full bg-primary dark:bg-secondary border-4 border-white dark:border-darkBg absolute -left-[9px] top-1 z-10;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
